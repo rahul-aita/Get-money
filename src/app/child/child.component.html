@@ -1,0 +1,9 @@
+<div class="child-component border p-3 rounded">
+    <h3 class="mb-3">Child Component</h3>
+    <p><strong>Name:</strong> {{ childName }}</p>
+    <p><strong>Money:</strong> ${{ childMoney }}</p>
+    <button class="btn btn-primary mb-2 ms-2" (click)="sendMessage()">Send Message to Parent</button>
+    <button class="btn btn-success mb-2 ms-2" (click)="sendMoney(10)">Send Money to Parent</button>
+    <button class="btn btn-info ms-2" (click)="receiveMoney(5)">Receive Money from Parent</button>
+  </div>
+  

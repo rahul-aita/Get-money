@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>Parent Component</h2>
+  <p>Message from child: {{ childMessage }}</p>
+  <div class="form-check form-check-inline">
+    <input type="radio" class="form-check-input" name="layoutType" [(ngModel)]="selectedLayout" [value]="'row'">
+    <label class="form-check-label">Row</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input type="radio" class="form-check-input" name="layoutType" [(ngModel)]="selectedLayout" [value]="'column'">
+    <label class="form-check-label">Column</label>
+  </div>
+  <div [fxLayout]="selectedLayout" class="mt-4">
+    <app-child [childName]="child1Name" [childMoney]="child1Money" (messageEvent)="receiveMessage($event)"
+      (sendMoneyEvent)="sendMoneyToChild(child1, $event)" (receiveMoneyEvent)="receiveMoneyFromChild($event)"
+      #child1></app-child>
+    <app-child [childName]="child2Name" [childMoney]="child2Money" (messageEvent)="receiveMessage($event)"
+      (sendMoneyEvent)="sendMoneyToChild(child2, $event)" (receiveMoneyEvent)="receiveMoneyFromChild($event)"
+      #child2></app-child>
+  </div>
+  <button class="btn btn-primary mt-3 ms-2" (click)="sendMoneyToChild1()">Send Money to Jack</button>
+  <button class="btn btn-primary mt-3  ms-2" (click)="sendMoneyToChild2()">Send Money to Jill</button>
+  <button class="btn btn-success mt-3  ms-2" (click)="getMoneyFromChild1()">Get Money from Jack</button>
+  <button class="btn btn-success mt-3  ms-2" (click)="getMoneyFromChild2()">Get Money from Jill</button>
+</div>
+
+<div *ngFor="let child of children">
+  <app-sub-child [child]="child"></app-sub-child>
+</div>
